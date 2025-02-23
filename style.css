@@ -1,0 +1,203 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+body {
+    background-color: #b9b9b9;
+    font-family: "Inter", sans-serif !important;
+    --cheqgreen: green;
+    --activeGreen: green;
+    --lightgray: green;
+    --bordergray: green;
+    --activeBorder: green;
+}
+
+div.container {
+    --bs-gutter-x: 0 rem;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Damit sich alles an die Bildschirmhöhe anpasst */
+    box-sizing: border-box;
+}
+
+.container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header header header"
+        "sidebar main main contacts";
+    gap: 15px;
+    min-height: 98vh;
+    background-color: #FFFFFF;
+    border-right: #a2a2a2 solid 1px;
+    border-left: #a2a2a2 solid 1px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+header {
+    grid-area: header;
+    border-bottom: darkgreen;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+}
+
+h1 {
+   font-style: italic;
+}
+
+h2 {
+    font-size: 20pt;
+    font-style: italic;
+    padding-bottom: 20px;
+}
+
+main {
+    grid-area: main;
+    overflow: auto;
+}
+
+.contacts {
+    grid-area: contacts;
+    margin-right: 10px;
+}
+
+.sidebar {
+    margin-left: 10px;
+    grid-area: sidebar;
+}
+
+.bg-header {
+    background-color: #5ba66c;
+}
+
+.header > * {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.header {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#logo {
+    width: 75px;
+}
+
+body {
+    height: calc( 100vh - 30px);
+    margin: auto;
+}
+
+#noselected {
+    text-align: center;
+    align-self: center;
+    margin-top: 150px;
+}
+
+#nolists {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.listCreation {
+    padding: 15px;
+    display: flex;
+    flex-flow: column;
+}
+
+.modal-container{
+    background-color: #FFFFFF;
+    border-right: #a2a2a2 solid 1px;
+    border-left: #a2a2a2 solid 1px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 40%; /* UNBEDINGT NOCH RESPONSESIVE MACHEN*/
+    align-self: center;
+}
+
+.modal-wrapper {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    vertical-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.listCreation {
+    display: flex;
+    gap: 15px;
+    flex-flow: column;
+    padding: 20px;
+    .btn {
+        width: 25%;
+    }
+}
+
+.modal-btns {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.tabs {
+    display: flex;
+    flex-flow: row;
+    gap: 15px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.tabs > div > i {
+    align-self: center;
+}
+
+.tabs div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.tabs >> div {
+    border-radius: 100px;
+    border: #a2a2a2 solid 1px;
+}
+
+.tabs div i {
+    font-size: 15pt;
+    margin-bottom: 5px;
+}
+
+
+#listNameInput {
+    margin-top: 5px;
+    border: #a2a2a2 1px solid;
+    border-radius: 5px;
+    height: 24pt;
+}
+
+.activeTab {
+    background-color: green !important;
+}
+
+.activeList {
+    background-color: #eefdef;
+    border: darkgreen 1px solid !important;
+}

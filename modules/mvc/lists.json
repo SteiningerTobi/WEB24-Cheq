@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "userid": 1,
+      "username": "Alice",
+      "userStatus": 0,
+      "lists": ["Supermarkt", "Drogerie"]
+    },
+    {
+      "userid": 2,
+      "username": "Bob",
+      "userStatus": 1,
+      "lists": ["Bürobedarf"]
+    }
+  ],
+  "lists": [
+    {
+      "name": "Supermarkt",
+      "items": [
+        { "name": "Äpfel", "symbol": "🍏", "tags": ["Obst"] },
+        { "name": "Milch", "symbol": "🥛", "tags": ["Getränke"] },
+        { "name": "Brot", "symbol": "🍞", "tags": ["Backwaren"] }
+      ]
+    },
+    {
+      "name": "Drogerie",
+      "items": [
+        { "name": "Duschgel", "symbol": "🧼", "tags": ["Pflege"] },
+        { "name": "Shampoo", "symbol": "🧴", "tags": ["Pflege"] }
+      ]
+    },
+    {
+      "name": "Bürobedarf",
+      "items": [
+        { "name": "Notizbuch", "symbol": "📓", "tags": ["Schreibwaren"] }
+      ]
+    }
+  ],
+  "tags": [
+    { "tagname": "Obst" },
+    { "tagname": "Getränke" },
+    { "tagname": "Backwaren" },
+    { "tagname": "Pflege" },
+    { "tagname": "Schreibwaren" }
+  ]
+}
