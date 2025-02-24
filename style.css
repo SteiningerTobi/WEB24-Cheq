@@ -3,11 +3,93 @@
 body {
     background-color: #b9b9b9;
     font-family: "Inter", sans-serif !important;
-    --cheqgreen: green;
-    --activeGreen: green;
+    --cheqgreen: darkgreen;
+    --headergreen: #5ba66c;
+    --activeGreen: #eefdef;
     --lightgray: green;
-    --bordergray: green;
+    --bordergray: lightgray;
     --activeBorder: green;
+    --darkFont: #002c00;
+}
+
+input{
+    border: var(--bordergray) 1px solid;
+    border-radius: 5px;
+}
+
+input[type="number"] {
+    text-align: left; /* Text rechtsbündig */
+    max-width: 50%;
+}
+
+.cheqed {
+    color: var(--cheqgreen);
+    font-size: 1.25rem;
+}
+
+.logoContainer{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-flow: row;
+}
+.accordion-body {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row;
+    .btn {
+        --bs-btn-padding-y: 0.15rem;
+    }
+}
+
+.activeTab{
+    border: var(--bordergray) solid 3px;
+    border-radius: 100px;
+}
+
+.noListSelected {
+    margin-top: 15%;
+    text-align: center;
+    color: var(--bordergray);
+}
+
+.alllists{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row;
+}
+
+.itemInList{
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    gap: 10px;
+    vertical-align: center;
+}
+
+.form-check-input{
+    margin-top: 0;
+}
+
+/* Ändert die Standardfarbe der Checkbox auf Grün */
+.form-check-input:checked {
+    background-color: var(--headergreen); /* Bootstrap Grün */
+    border-color: var(--activeBorder);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--activeGreen);
+    color: var(--darkFont);
+}
+
+.accordion-header{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.ListItemName {
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 div.container {
@@ -185,6 +267,25 @@ body {
     margin-bottom: 5px;
 }
 
+.form-check-input{
+    border: var(--activeBorder) solid 2px;
+}
+
+#editingModalHeader{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    h2 {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+}
+
+.list-group-item{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
 
 #listNameInput {
     margin-top: 5px;
@@ -198,6 +299,12 @@ body {
 }
 
 .activeList {
-    background-color: #eefdef;
+    background-color: var(--activeGreen);
     border: darkgreen 1px solid !important;
+}
+
+.ListHeader {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
 }

@@ -1,7 +1,7 @@
 export default class Listing {
     #id;
     #name;
-    #completed;
+    completed;
     items;
     static id_counter = 1;
 
@@ -9,19 +9,40 @@ export default class Listing {
         this.#id = Listing.id_counter++;
         this.#name = name;
         this.items = [];
-        this.#completed = false;
+        this.completed = false;
     }
 
     addItem(item) {
         this.items.push(item);
     }
 
-    removeItem(itemId) {
-        this.items = this.items.filter(item => item.id !== itemId);
+    setListName(name){
+        this.#name = name;
     }
 
-    toggleCompleted() {
-        this.#completed = !this.#completed;
+    removeItem(itemName) {
+        this.items = this.items.filter(item => item.getName() !== itemName);
+    }
+
+
+    completeList() {
+        this.completed = true;
+    }
+
+    isCompleted(){
+        //console.log(this.items.completed);
+        //return this.items.completed;
+        for (let i = 0; i < this.items.length; i++){
+            let x = this.items[i];
+            if (x.completed === false){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    openList() {
+        this.completed = false;
     }
 
     getItems() {

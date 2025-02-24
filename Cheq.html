@@ -19,6 +19,24 @@
             <div class="header">
                 <div><img src="cheq.png" id="logo" alt=""></div>
                 <div><h1>Cheq!</h1></div>
+                <div class="tabs">
+                    <div class="listtab btn btn-outline-light">
+                        <i class="bi bi-card-checklist"></i>
+                        <p>Listen</p>
+                    </div>
+                    <div class="itemtab btn btn-outline-light">
+                        <i class="bi bi-bag-check"></i>
+                        <p>Artikel</p>
+                    </div>
+                    <div class="tagstab btn btn-outline-light">
+                        <i class="bi bi-tags"></i>
+                        <p>Tags</p>
+                    </div>
+                    <div class="usertab btn btn-outline-light">
+                        <i class="bi bi-person"></i>
+                        <p>User</p>
+                    </div>
+                </div>
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
@@ -29,25 +47,7 @@
         </header>
 
         <div class="sidebar bg-light p-3 border">
-            <div class="tabs">
-                <div class="liststab">
-                    <i class="bi bi-card-checklist"></i>
-                    <p>Listen</p>
-                </div>
-                <div class="itemtab">
-                    <i class="bi bi-bag-check"></i>
-                    <p>Artikel</p>
-                </div>
-                <div class="tagstab">
-                    <i class="bi bi-tags"></i>
-                    <p>Tags</p>
-                </div>
-                <div class="usertab">
-                    <i class="bi bi-person"></i>
-                    <p>User</p>
-                </div>
-            </div>
-            <h2>Shoppinglisten</h2>
+
             <div id="lists-overview" class="lists_overview">
             </div>
 
@@ -56,21 +56,21 @@
 
             </ul>
 
-            <comment><p id="nolists" class="text-muted">Keine Liste vorhanden</p> </comment>
+            <!--<p id="nolists" class="text-muted">Keine Liste vorhanden</p> </>-->
             <button class="btn btn-success mt-3 w-100" id="addList" data-bs-toggle="modal" data-bs-target="#addListsModal">Neue Liste anlegen</button>
         </div>
 
         <main class="listings bg-white p-3 border">
 
-            <h2>Aktuelle Liste</h2>
+            <h2 id="mainSectHeader">Aktuelle Liste</h2>
             <div id="list-detail"></div>
 
             <ul class="list-group">
 
             </ul>
-            <button class="btn btn-success mt-3 w-100">Liste abschließen</button>
+            <!--<button class="btn btn-success mt-3 w-100">Liste abschließen</button>
 
-            <p id="noselected" class="text-muted">keine Liste ausgewählt</p>
+            <p id="noselected" class="text-muted">keine Liste ausgewählt</p>-->
         </main>
 
         <div class="contacts bg-light p-3 border">
@@ -101,6 +101,27 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" id="editingModalHeader">
+                    <h2 class="modal-title" id="editModalHeader"></h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="listNameInput" id="editInputModal"></label>
+                    <input type="text" id="editingInput" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Schließen</button>
+                    <button id="editBtn" class="btn btn-success" data-bs-dismiss="modal">Änderung speichern</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
     <script type="module" src="main.js"></script>

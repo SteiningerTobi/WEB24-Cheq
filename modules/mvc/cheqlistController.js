@@ -1,5 +1,6 @@
 //import { renderAllLists, showListDetails } from "./view.js";
 import { ListView } from "./listview.js";
+import { ItemView} from "./articleview.js";
 import { CheqModel } from "./model.js";
 import ListItem from "../classes/ListItem.js";
 import Tag from "../classes/Tag.js";
@@ -8,7 +9,7 @@ import User from "../classes/User.js";
 class CheqController {
     constructor() {
         this.listView = new ListView;
-        this.itemView = new ListView;
+        this.itemView = new ItemView;
         this.tagView = new ListView;
         this.userview = new ListView;
         this.model = new CheqModel;
@@ -16,13 +17,108 @@ class CheqController {
         document.getElementById("createList").onclick = this.createList.bind(this);
     }
 
+    editList(list){
+        this.listView.renderListEditing();
 
+        // Sicherstellen, dass der Button vorhanden ist
+        let editBtn = document.getElementById("editBtn");
+        let editingInput = document.getElementById("editingInput");
 
-    initCheq() {
-        this.model.loadFromJson();
+        if (!editBtn || !editingInput) {
+            console.error("Edit-Modal UI-Elemente nicht gefunden!");
+            return;
+        }
+
+        // Click-Listener setzen
+        editBtn.onclick = () => {
+            let newVal = editingInput.value.trim();
+            if (newVal === "") {
+                alert("Bitte neuen Namen eingeben!");
+                return;
+            }
+
+            // Name in der Model-Liste ändern
+            list.setListName(newVal);
+            console.log("Neue Listen nach Bearbeitung:", this.model.lists);
+
+            // UI aktualisieren
+            this.updateListsView();
+
+            // Klick auf die geänderte Liste simulieren
+            this.simulateClickOnList(list);
+        };
+    }
+
+    closeList(list){
+        console.log(list.items);
+        for (let i = 0; i < list.items.length; i++){
+            let ilist = list.items[i];
+            if (!ilist.isCompleted()){
+                alert("Es sind noch Einkäufe in der Liste offen!")
+                return
+            }
+        }
+        list.completeList();
         this.updateListsView();
+        this.simulateClickOnList(list);
+        console.log(list);
+    }
+
+    openList(list){
+        list.openList();
+        this.updateListsView();
+        this.simulateClickOnList(list);
+        this.listView.renderListDetails(list);
+        console.log(list);
+    }
+
+    openListTab(){
+        let tabs = document.querySelectorAll(".activeTab");
+        for (let tab of tabs){
+            tab.classList.remove("activeTab");
+        }
+        let listTab = document.querySelector(".listtab");
+        listTab.classList.add("activeTab");
+
+        let currentList = document.querySelector(".active");
+        this.updateListsView();
+        currentList.click();
+    }
+
+    openItemTab(){
+        let tabs = document.querySelectorAll(".activeTab");
+        for (let tab of tabs){
+            tab.classList.remove("activeTab");
+        }
+        let itemTab = document.querySelector(".itemtab");
+        itemTab.classList.add("activeTab");
+        this.updateItemView();
+    }
+
+    updateItemView(){
+        this.itemView.renderArticles(this.model.items);
+    }
+
+    simulateClickOnList(list) {
+        setTimeout(() => {
+            let listElements = document.querySelectorAll(".list");
+            let targetList = [...listElements].find(el => el.textContent.trim() === list.getName());
+
+            if (targetList) {
+                targetList.click();  // 🔥 Klick auf die Liste simulieren
+            } else {
+                console.warn("Liste nicht gefunden:", list.getName());
+            }
+        }, 100); // Kleiner Timeout für das UI-Update
+    }
+
+
+    async initCheq() {
+        await this.model.loadFromJson();
+        this.updateListsView();
+        this.listView.renderEmptyListDetails();
         console.log("initiated");
-        alert("NEIN")
+        //alert("NEIN")
 
 
         //this.view.bindAddBook((title, author) => {
@@ -33,6 +129,9 @@ class CheqController {
 
     updateListsView() {
         this.listView.renderLists(this.model.lists);
+        let mainHeader = document.getElementById("mainSectHeader");
+        mainHeader.innerHTML = "";
+        mainHeader.innerHTML = "Aktuelle Liste";
     }
 
     createList(){
@@ -43,7 +142,7 @@ class CheqController {
         if (listName === "") {
             alert("Bitte einen Namen eingeben!");
         } else {
-            this.model.addListing(listName);
+            this.model.addList(listName);
             nameInput.value = "";
             this.listView.renderLists(this.model.lists);
         }

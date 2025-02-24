@@ -10,29 +10,29 @@
       "userid": 2,
       "username": "Bob",
       "userStatus": 1,
-      "lists": ["Bürobedarf"]
+      "lists": ["Bürobedarf", "Drogerie"]
     }
   ],
   "lists": [
     {
       "name": "Supermarkt",
       "items": [
-        { "name": "Äpfel", "symbol": "🍏", "tags": ["Obst"] },
-        { "name": "Milch", "symbol": "🥛", "tags": ["Getränke"] },
-        { "name": "Brot", "symbol": "🍞", "tags": ["Backwaren"] }
+        { "name": "Äpfel", "symbol": "🍏", "tags": ["Obst"], "count": 5 },
+        { "name": "Milch", "symbol": "🥛", "tags": ["Getränke"], "count": 2 },
+        { "name": "Brot", "symbol": "🍞", "tags": ["Backwaren"], "count": 1 }
       ]
     },
     {
       "name": "Drogerie",
       "items": [
-        { "name": "Duschgel", "symbol": "🧼", "tags": ["Pflege"] },
-        { "name": "Shampoo", "symbol": "🧴", "tags": ["Pflege"] }
+        { "name": "Duschgel", "symbol": "🧼", "tags": ["Pflege"], "count": 3 },
+        { "name": "Shampoo", "symbol": "🧴", "tags": ["Pflege"], "count": 2 }
       ]
     },
     {
       "name": "Bürobedarf",
       "items": [
-        { "name": "Notizbuch", "symbol": "📓", "tags": ["Schreibwaren"] }
+        { "name": "Notizbuch", "symbol": "📓", "tags": ["Schreibwaren"], "count": 1 }
       ]
     }
   ],

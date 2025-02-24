@@ -40,7 +40,7 @@ export class CheqModel {
                 // Falls Items vorhanden sind, füge sie zur Liste hinzu
                 if (l.items) {
                     for (let i of l.items) {
-                        let item = new Item(i.name, i.symbol);
+                        let item = new Item(i.name, i.symbol, i.count);
                         list.addItem(item); // Sicherstellen, dass `addItem()` existiert!
                     }
                 }
@@ -54,14 +54,56 @@ export class CheqModel {
         }
     }
 
-    addListing(name) {
+    getLists(){
+        return this.lists;
+    }
+
+    getListByID (id) {
+        if (this.lists[id] !== null){
+            let list = this.lists[id];
+            return list;
+        }
+        else alert("Keine Liste gefunden")
+    }
+
+    getNewName(list){
+        let editingInput = document.getElementById("editingInput");
+        let editBtn = document.getElementById("editBtn");
+        editBtn.addEventListener("click", () => {
+            let newVal = editingInput.value;
+            if (newVal === "") {
+                alert("Bitte neuen Namen eingeben!");
+            }
+            else {
+                list.setListName(newVal)
+            }
+        });
+    }
+
+    addList(name) {
         const newList = new Listing(name);
         this.lists.push(newList);
     }
 
-    addList(name) {
+    editList(list) {
+        let editingInput = document.getElementById("editingInput");
+        let editBtn = document.getElementById("editBtn");
+        editBtn.addEventListener("click", () => {
+            let newVal = editingInput.value;
+            if (editingInput.value === "") {
+                alert("Bitte neuen Namen eingeben!");
+            }
+            list.setListName(newVal);
+        });
+    }
+
+    addListe(name) {
         let newListing = new Listing(name);
         this.lists.push(newListing);
+    }
+
+    setListOpen(list){
+        list.openList();
     }
 }
 
