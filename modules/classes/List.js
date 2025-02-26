@@ -32,8 +32,6 @@ export default class Listing {
     }
 
     isCompleted(){
-        //console.log(this.items.completed);
-        //return this.items.completed;
         for (let i = 0; i < this.items.length; i++){
             let x = this.items[i];
             if (x.completed === false){

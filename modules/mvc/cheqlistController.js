@@ -45,13 +45,13 @@ class CheqController {
             newArticleBtn.addEventListener("click", function (event) {
                 event.preventDefault(); // Verhindert unerwünschtes Verhalten
 
-                // 🔹 Modal "Vorhandenen Artikel hinzufügen" schließen
+                // Modal "Vorhandenen Artikel hinzufügen" schließen
                 let existingItemModal = bootstrap.Modal.getInstance(document.getElementById("addExistingItemModal"));
                 if (existingItemModal) {
                     existingItemModal.hide();
                 }
 
-                // 🔹 Modal "Neuen Artikel erstellen" öffnen
+                // Modal "Neuen Artikel erstellen" öffnen
                 let newItemModal = new bootstrap.Modal(document.getElementById("addItemModal"), { backdrop: "static" });
                 newItemModal.show();
             });
@@ -225,13 +225,6 @@ class CheqController {
         this.listView.renderEmptyListDetails();
         let listTab = document.querySelector(".listtab");
         listTab.classList.add("activeTab");
-        //alert("NEIN")
-
-
-        //this.view.bindAddBook((title, author) => {
-        //    this.model.addBook(title, author);
-        //    this.updateView();
-        //});
     }
 
     updateListsView() {
@@ -312,7 +305,6 @@ class CheqController {
     }
 
     findArticle(list, item) {
-        //this.model.findSuperArticle(name);
         let name = item.name;
         let article = this.model.articles.find(article => article.getName() === name);
 

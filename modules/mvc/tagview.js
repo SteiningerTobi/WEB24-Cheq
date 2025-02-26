@@ -1,5 +1,3 @@
-import Item from "../classes/Item.js";
-import Article from "../classes/Article.js";
 import {cheqlistController} from "./cheqlistController.js";
 export class TagView {
     constructor() {
@@ -56,18 +54,15 @@ export class TagView {
             return;
         }
 
-        // Sicherstellen, dass das Tag-Container-Element existiert
         let tagContainer = this.tagContainer;
         if (!tagContainer) {
             console.error("Fehler: 'tagContainer' ist nicht vorhanden.");
             return;
         }
 
-        // **Header setzen**
         let header = document.getElementById("mainSectHeader");
         header.innerHTML = "Alle Tags";
 
-        // **Container leeren**
         tagContainer.innerHTML = "";
 
         if (tags.length === 0) {
@@ -75,18 +70,20 @@ export class TagView {
             return;
         }
 
-        // **Bootstrap Liste für die Tags**
         let tagList = document.createElement("ul");
         tagList.classList.add("list-group");
 
         tags.forEach((tag, index) => {
-            let tagName = tag.tagname; // Name des Tags
+            let tagName = tag.tagname;
 
             let listItem = document.createElement("li");
             listItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
 
             listItem.innerHTML = `
-            <input type="text" class="tag-name-edit" value="${tagName}" id="${index}NameOfTag" placeholder="${tagName}">
+            <div>
+                <label for="${index}NameOfTag">Bezeichnung:</label>   
+                <input type="text" class="tag-name-edit" value="${tagName}" id="${index}NameOfTag" placeholder="${tagName}">
+            </div>
             <div>
                 <i class="bi bi-trash3 btn btn-danger delete-tag" data-id="${index}"></i>
             </div>
@@ -95,14 +92,11 @@ export class TagView {
             tagList.appendChild(listItem);
         });
 
-
-
-        // **Liste in das Tag-Container einfügen**
         tagContainer.appendChild(tagList);
 
         document.querySelectorAll(".tag-name-edit").forEach((input, index) => {
             input.addEventListener("change", (event) => {
-                let newTagName = event.target.value.trim();  // ✅ Korrekt trimmen
+                let newTagName = event.target.value.trim();
 
                 if (newTagName === "") {
                     alert("⚠️ Tag-Name darf nicht leer sein!");
@@ -114,11 +108,10 @@ export class TagView {
         });
 
 
-        // **Eventlistener für Delete-Buttons**
         document.querySelectorAll(".delete-tag").forEach(btn => {
             btn.addEventListener("click", (event) => {
                 let tagId = event.target.getAttribute("data-id");
-                cheqlistController.deleteTag(tags[tagId]); // 🔥 Event zum Löschen
+                cheqlistController.deleteTag(tags[tagId]);
             });
         });
     }

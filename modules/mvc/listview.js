@@ -126,7 +126,9 @@ export class ListView {
         <div class="list-detail p-3 border rounded">
             <div class="ListHeader d-flex justify-content-between align-items-center">
                 <h3>${listname}</h3>
-                <i class="bi bi-pencil btn btn-success list-edit" id="${list.id}-edit-btn" data-bs-toggle="modal" data-bs-target="#editModal"></i>    
+                <div>
+                    <i class="bi bi-pencil btn btn-success list-edit" id="${list.id}-edit-btn" data-bs-toggle="modal" data-bs-target="#editModal"></i>    
+                </div>
             </div>
             <p>
               <div class="UsersinList">
@@ -158,7 +160,7 @@ export class ListView {
         });
 
 
-        // ✅ Eventlistener für Checkboxen setzen
+        // Eventlistener für Checkboxen setzen
         list.items.forEach((item, index) => {
             let checkbox = document.getElementById(`item-${index}`);
             if (checkbox) {
@@ -189,7 +191,7 @@ export class ListView {
         });
 
 
-        // ✅ Eventlistener für "Liste abschließen"-Button setzen
+        // Eventlistener für "Liste abschließen"-Button setzen
         let closeButton = document.getElementById("completeListBtn");
         if (closeButton) {
             closeButton.addEventListener("click", () => {
@@ -204,7 +206,7 @@ export class ListView {
             })
         }
 
-        // ✅ Eventlistener für den Edit-Button setzen
+        // Eventlistener für den Edit-Button setzen
         let editBtn = document.getElementById(`${list.id}-edit-btn`);
         if (editBtn) {
             editBtn.addEventListener("click", () => {
@@ -212,18 +214,13 @@ export class ListView {
             });
         }
 
-        // ✅ Direkt prüfen, ob der Button aktiviert werden kann
+        // Direkt prüfen, ob der Button aktiviert werden kann
         this.updateCompleteButton(list);
 
         cheqlistController.addDeleteEventListeners(list);
 
     }
 
-
-    /**
-     * ✅ Überprüft, ob ALLE Items einer Liste abgehakt wurden
-     * und aktiviert / deaktiviert den "Liste abschließen"-Button.
-     */
     updateCompleteButton(list) {
         let allChecked = list.items.every(item => item.isCompleted());
         let closeButton = document.getElementById("completeListBtn");
@@ -310,22 +307,22 @@ export class ListView {
             emojiPicker.style.display = "block";
 
             emojiPicker.style.display = "block";
-            emojiPicker.style.position = "fixed"; // Fixierte Position relativ zum Viewport
-            emojiPicker.style.top = "50%"; // Vertikal zentriert
-            emojiPicker.style.left = "50%"; // Horizontal zentriert
-            emojiPicker.style.transform = "translate(-50%, -50%)"; // Exakte Zentrierung
-            emojiPicker.style.zIndex = "1050"; // Sicherstellen, dass er über allem liegt
-            emojiPicker.style.backgroundColor = "white"; // Hintergrund für bessere Sichtbarkeit
-            emojiPicker.style.border = "1px solid #ccc"; // Optional: Rand hinzufügen
-            emojiPicker.style.borderRadius = "10px"; // Abgerundete Ecken
-            emojiPicker.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.1)"; // Optional: Schatten für besseren Look
-            emojiPicker.style.padding = "10px"; // Abstand innen für bessere Darstellung
+            emojiPicker.style.position = "fixed";
+            emojiPicker.style.top = "50%";
+            emojiPicker.style.left = "50%";
+            emojiPicker.style.transform = "translate(-50%, -50%)";
+            emojiPicker.style.zIndex = "1050";
+            emojiPicker.style.backgroundColor = "white";
+            emojiPicker.style.border = "1px solid #ccc";
+            emojiPicker.style.borderRadius = "10px";
+            emojiPicker.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.1)";
+            emojiPicker.style.padding = "10px";
         });
 
         // Event: Wenn Emoji ausgewählt wird, in Input-Feld setzen & Picker schließen
         emojiPicker.addEventListener("emoji-click", (event) => {
             emojiInput.value = event.detail.unicode;
-            emojiPicker.style.display = "none"; // Picker verstecken
+            emojiPicker.style.display = "none";
         });
 
         // Picker schließen, wenn außerhalb geklickt wird

@@ -11,6 +11,49 @@ body {
     --activeBorder: green;
     --darkFont: #002c00;
     --smallPadding: 5px;
+
+
+    animation: flyIn 0.75s ease-out forwards;
+    transform: translateY(100vh);
+    opacity: 0;
+}
+
+@keyframes flyIn {
+    from {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDetail {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.list-detail {
+    animation: slideInDetail 0.4s ease-out;
+}
+
+#articlesAccordion {
+    animation: slideInDetail 0.4s ease-out;
+}
+
+#list-detail > .list-group {
+    animation: slideInDetail 0.4s ease-out;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 input{
@@ -19,7 +62,7 @@ input{
 }
 
 input[type="number"] {
-    text-align: left; /* Text rechtsbündig */
+    text-align: left;
     max-width: 50%;
 }
 
@@ -121,9 +164,8 @@ input[type="number"] {
     margin-top: 0;
 }
 
-/* Ändert die Standardfarbe der Checkbox auf Grün */
 .form-check-input:checked {
-    background-color: var(--headergreen); /* Bootstrap Grün */
+    background-color: var(--headergreen);
     border-color: var(--activeBorder);
 }
 
@@ -149,7 +191,7 @@ div.container {
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%; /* Damit sich alles an die Bildschirmhöhe anpasst */
+    height: 100%;
     box-sizing: border-box;
 }
 
@@ -330,7 +372,7 @@ body {
     border-right: #a2a2a2 solid 1px;
     border-left: #a2a2a2 solid 1px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 40%; /* UNBEDINGT NOCH RESPONSESIVE MACHEN*/
+    width: 40%;
     align-self: center;
 }
 

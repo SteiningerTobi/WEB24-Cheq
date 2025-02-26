@@ -62,11 +62,11 @@ export class ItemView {
             const accordionItem = document.createElement("div");
             accordionItem.classList.add("accordion-item");
 
-            // 🔹 Dynamisches Tag-Select direkt hier einfügen
+            //Dynamisches Tag-Select direkt hier einfügen
             let tagOptions = `<option value="">Kein Tag</option>`; // Standardwert für kein Tag
 
-            // 🔹 Das einzelne Tag-Objekt abrufen
-            let selectedTag = item.getTags(); // Falls null oder undefined, setzen wir ""
+            //Das einzelne Tag-Objekt abrufen
+            let selectedTag = item.getTags(); // Falls null oder undefined, setze ""
 
             cheqlistController.model.tags.forEach(tag => {
                 let isSelected =
@@ -94,13 +94,6 @@ export class ItemView {
                         <label for="${i}ItemName">Name:</label>
                         <input type="text" class="itemNameEditor" id="${i}ItemName" value="${items[i].name}">
                     </div>
-                    <!--
-                    <div class="flex-row">
-                        <label for="tagSelect${i}">Tag:</label>
-                        <select id="tagSelect${i}" class="form-select"">
-                            ${tagOptions}
-                        </select>
-                    </div>-->
                     <div class="article-actions d-flex align-items-center">
                         <i class="bi bi-trash3 btn btn-danger delete-article" data-id="${i}"></i>
                     </div>
@@ -142,13 +135,13 @@ export class ItemView {
             });
         });
 
-        // ✅ Eventlistener für Delete-Buttons setzen (mit Bestätigung)
+        // Eventlistener für Delete-Buttons setzen (mit Bestätigung)
         document.querySelectorAll(".delete-article").forEach(btn => {
             btn.addEventListener("click", (event) => {
                 let itemId = event.target.getAttribute("data-id");
                 let itemToDelete = items[itemId];
 
-                // 🔹 Bestätigungs-Modal aufrufen
+                // Bestätigungs-Modal aufrufen
                 this.showDeleteConfirmationModal(itemToDelete, items);
             });
         });
@@ -211,21 +204,19 @@ export class ItemView {
             return;
         }
 
-        // 🟢 Liste aller verfügbaren Tags abrufen
+        // Liste aller verfügbaren Tags abrufen
         let tags = cheqlistController.model.tags;
 
-        // 🟢 HTML für das Artikelmenü erstellen
+        // HTML für das Artikelmenü erstellen
         articleSidebar.innerHTML = `
         <div class="article-menu">
             <h2>Artikelübersicht</h2>
-            
-            <!-- Neuen Artikel anlegen Button -->
+           
             <button type="button" id="addNewArticleBtn" class="newArticleBtn btn btn-success w-100 mt-2" 
             data-bs-toggle="modal" data-bs-target="#addItemModal">Neuen Artikel anlegen</button>
 
             <h5 class="margin-top-med">Filtern nach Tags:</h5>
             <div id="tagFilterContainer" class="tag-filters">
-                <!-- "Alle Artikel"-Option als Standard -->
                 <div class="form-check d-flex align-items-center">
                     <input class="form-check-input tag-radio me-2" type="radio" name="tagFilterGroup" id="tag-all" value="all" checked>
                     <label class="form-check-label" for="tag-all">Alle Artikel</label>
@@ -240,8 +231,7 @@ export class ItemView {
                 `).join("") : "<p class='text-muted'>Keine Tags verfügbar</p>"}
             </div>
             
-            <!-- Filter-Button -->
-            <div class="btn btn-success filterBtn mt-2" id="filterBtn"><i class="bi bi-funnel"></i> Filtern</div>            
+            <div class="btn btn-outline-success filterBtn mt-2" id="filterBtn"><i class="bi bi-funnel"></i> Filtern</div>            
 
             </div>
         `;
@@ -258,12 +248,12 @@ export class ItemView {
             cheqlistController.filterBy(filterTag);
         })
 
-        // 🟢 Eventlistener für den "Neuen Artikel anlegen"-Button
+        // Eventlistener für den "Neuen Artikel anlegen"-Button
         document.getElementById("addNewArticleBtn").addEventListener("click", () => {
             //this.renderArticleCreationForm();
         });
 
-        // 🟢 Eventlistener für Tag-Filter-Checkboxen setzen
+        // Eventlistener für Tag-Filter-Checkboxen setzen
         let checkboxes = document.querySelectorAll(".tag-checkbox");
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener("change", () => {

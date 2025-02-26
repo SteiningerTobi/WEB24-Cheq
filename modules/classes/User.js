@@ -18,12 +18,4 @@ export default class User {
     removeList(listId) {
         this.#lists = this.#lists.filter(list => list.id !== listId);
     }
-
-    getLists() {
-        return this.#lists;
-    }
-
-    getUserPerList(list){
-        let listname = list.name;
-    }
 }

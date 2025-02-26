@@ -3,17 +3,14 @@ export default class Subject {
         this.observers = [];
     }
 
-    // Observer registrieren
     addObserver(observer) {
         this.observers.push(observer);
     }
 
-    // Observer entfernen
     removeObserver(observer) {
         this.observers = this.observers.filter(obs => obs !== observer);
     }
 
-    // Alle Observer benachrichtigen
     notify(eventType, data) {
         console.log(`📢 Notify-Event: "${eventType}" mit Daten:`, data);
         this.observers.forEach(observer => {
