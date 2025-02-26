@@ -1,35 +1,42 @@
-export default class Item {
-    #id;
-    #name;
-    #symbol;
-    #tags;
+import Article from "./Article.js";
+
+export default class Item extends Article{
+    symbol;
+    tags;
     completed;
-    #count
+    count
     static id_counter = 0;
 
-    constructor(name, symbol, count, completed = false) {
-        this.#id = Item.id_counter++;
-        this.#name = name;
-        this.#count = count;
-        this.#symbol = symbol;
-        this.#tags = [];
+    constructor(name, symbol, count, completed = false, tags) {
+        super(name, symbol, tags);
+        this.count = count;
         this.completed = completed;
     }
 
+    setName(name){
+        super.setName(name);
+        this.name = name;
+    }
+
+    setItemTags(tag){
+        super.setTag(tag);
+        this.tags = super.tags;
+    }
+
     getName() {
-        return this.#name;
+        return super.getName();
     }
 
     getCount(){
-        return this.#count;
+        return this.count;
     }
 
     setCount(count){
-        this.#count = count;
+        this.count = count;
     }
 
     getSymbol(){
-        return this.#symbol;
+        return super.getSymbol();
     }
 
     isCompleted() {
@@ -45,14 +52,14 @@ export default class Item {
     }
 
     addTag(tag) {
-        this.#tags.push(tag);
+        this.tags.push(tag);
     }
 
     removeTag(tagName) {
-        this.#tags = this.#tags.filter(tag => tag.tagname !== tagName);
+        this.tags = this.tags.filter(tag => tag.tagname !== tagName);
     }
 
     getTags() {
-        return this.#tags;
+        return super.getTags();
     }
 }

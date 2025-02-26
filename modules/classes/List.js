@@ -3,6 +3,7 @@ export default class Listing {
     #name;
     completed;
     items;
+    users;
     static id_counter = 1;
 
     constructor(name) {
@@ -10,6 +11,7 @@ export default class Listing {
         this.#name = name;
         this.items = [];
         this.completed = false;
+        this.users = [];
     }
 
     addItem(item) {

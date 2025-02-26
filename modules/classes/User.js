@@ -22,4 +22,8 @@ export default class User {
     getLists() {
         return this.#lists;
     }
+
+    getUserPerList(list){
+        let listname = list.name;
+    }
 }

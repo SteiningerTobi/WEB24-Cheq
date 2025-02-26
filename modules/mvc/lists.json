@@ -41,6 +41,26 @@
     { "tagname": "Getränke" },
     { "tagname": "Backwaren" },
     { "tagname": "Pflege" },
-    { "tagname": "Schreibwaren" }
+    { "tagname": "Schreibwaren" },
+    { "tagname": "Tierbedarf" },
+    { "tagname": "Spielzeug" }
+  ],
+  "articles": [
+    { "name": "Äpfel", "symbol": "🍏", "tags": ["Obst"] },
+    { "name": "Milch", "symbol": "🥛", "tags": ["Getränke"] },
+    { "name": "Brot", "symbol": "🍞", "tags": ["Backwaren"] },
+    { "name": "Eier", "symbol": "🥚", "tags": ["Eier"] },
+    { "name": "Butter", "symbol": "🧈", "tags": ["Milchprodukte"] },
+    { "name": "Käse", "symbol": "🧀", "tags": ["Milchprodukte"] },
+    { "name": "Karotten", "symbol": "🥕", "tags": ["Gemüse"] },
+    { "name": "Duschgel", "symbol": "🧼", "tags": ["Pflege"] },
+    { "name": "Shampoo", "symbol": "🧴", "tags": ["Pflege"] },
+    { "name": "Zahnpasta", "symbol": "🦷", "tags": ["Pflege"] },
+    { "name": "Taschentücher", "symbol": "🧻", "tags": ["Hygiene"] },
+    { "name": "Handcreme", "symbol": "🤲", "tags": ["Pflege"] },
+    { "name": "Notizbuch", "symbol": "📓", "tags": ["Schreibwaren"] },
+    { "name": "Kugelschreiber", "symbol": "🖊️", "tags": ["Schreibwaren"] },
+    { "name": "Druckerpapier", "symbol": "📄", "tags": ["Schreibwaren"] },
+    { "name": "Ordner", "symbol": "📁", "tags": ["Büro"] }
   ]
 }

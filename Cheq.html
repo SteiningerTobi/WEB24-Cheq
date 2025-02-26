@@ -17,26 +17,8 @@
         </div>
         <header class="bg-header text-white text-center py-3">
             <div class="header">
-                <div><img src="cheq.png" id="logo" alt=""></div>
+                <div><img src="cheq.png" id="logo" alt="" draggable="false"></div>
                 <div><h1>Cheq!</h1></div>
-                <div class="tabs">
-                    <div class="listtab btn btn-outline-light">
-                        <i class="bi bi-card-checklist"></i>
-                        <p>Listen</p>
-                    </div>
-                    <div class="itemtab btn btn-outline-light">
-                        <i class="bi bi-bag-check"></i>
-                        <p>Artikel</p>
-                    </div>
-                    <div class="tagstab btn btn-outline-light">
-                        <i class="bi bi-tags"></i>
-                        <p>Tags</p>
-                    </div>
-                    <div class="usertab btn btn-outline-light">
-                        <i class="bi bi-person"></i>
-                        <p>User</p>
-                    </div>
-                </div>
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
@@ -45,24 +27,41 @@
                 </div>
             </div>
         </header>
+        <div class="sidebar">
+            <div class="sidebarTabMenu">
+                <div class="tabs">
+                    <div class="listtab btn">
+                        <i class="bi bi-card-checklist"></i>
+                        <p>Listen</p>
+                    </div>
+                    <div class="itemtab btn">
+                        <i class="bi bi-bag-check"></i>
+                        <p>Artikel</p>
+                    </div>
+                    <div class="tagstab btn">
+                        <i class="bi bi-tags"></i>
+                        <p>Tags</p>
+                    </div>
+                    <div class="usertab btn">
+                        <i class="bi bi-person"></i>
+                        <p>User</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebarMenu bg-light p-3 border">
+                <div id="lists-overview" class="lists_overview fullWidth">
+                </div>
+                <ul class="list-group">
+                </ul>
 
-        <div class="sidebar bg-light p-3 border">
-
-            <div id="lists-overview" class="lists_overview">
+                <!--<p id="nolists" class="text-muted">Keine Liste vorhanden</p> </>-->
             </div>
 
-
-            <ul class="list-group">
-
-            </ul>
-
-            <!--<p id="nolists" class="text-muted">Keine Liste vorhanden</p> </>-->
-            <button class="btn btn-success mt-3 w-100" id="addList" data-bs-toggle="modal" data-bs-target="#addListsModal">Neue Liste anlegen</button>
         </div>
 
         <main class="listings bg-white p-3 border">
 
-            <h2 id="mainSectHeader">Aktuelle Liste</h2>
+            <h2 id="mainSectHeader"></h2>
             <div id="list-detail"></div>
 
             <ul class="list-group">
@@ -72,17 +71,12 @@
 
             <p id="noselected" class="text-muted">keine Liste ausgewählt</p>-->
         </main>
-
-        <div class="contacts bg-light p-3 border">
-            <h2>Features</h2>
-            <button class="btn btn-success w-100 mb-2">Einladen</button>
-            <button class="btn btn-success w-100 mb-2">Listen teilen</button>
-            <button class="btn btn-success w-100 mb-2">Einstellungen</button>
-        </div>
     </div>
 
     <div id="itemContainer"> </div>
-    <!-- Bootstrap Modal -->
+
+
+    <!-- Bootstrap Modals -->
     <div class="modal fade" id="addListsModal" tabindex="-1" aria-labelledby="addListsModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -121,11 +115,71 @@
         </div>
     </div>
 
+    <!-- Modal für das Hinzufügen von Artikeln -->
+    <div class="modal fade" id="addExistingItemModal" tabindex="-1" aria-labelledby="addExistingItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addExistingItemModalLabel">Vorhandenen Artikel hinzufügen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="existingArticleSelect">Artikel auswählen</label>
+                    <select id="existingArticleSelect" class="form-select mb-2">
+                        <!-- Hier werden Artikel dynamisch eingefügt -->
+                    </select>
+
+                    <label for="existingItemCount">Anzahl</label>
+                    <input type="number" id="existingItemCount" class="form-control mb-2" min="1" max="99999" value="1">
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="newArticleBtn btn btn-outline-success" data-bs-toggle="modal"
+                            data-bs-target="addItemModal">Neuen Artikel erstellen</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Abbrechen</button>
+                    <button id="confirmAddExistingItem" class="btn btn-success">Hinzufügen</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+    <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addItemModalLabel">Neuen Artikel erstellen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="itemName">Artikelname</label>
+                    <input type="text" id="itemName" class="form-control mb-2" placeholder="Name des Items">
+
+                    <label for="itemSymbol">Symbol</label>
+                    <div class="d-flex align-items-center mb-2">
+                        <input type="text" id="itemSymbol" class="form-control mb-2 me-2" placeholder="Wähle ein Emoji" readonly>
+                        <button id="emojiPickerBtn" class="btn btn-outline-secondary">😀</button>
+                    </div>
+                    <emoji-picker id="emojiPicker" style="display:none; position:absolute; z-index:1000;"></emoji-picker>
+
+                    <label for="itemCount">Anzahl</label>
+                    <input type="number" id="itemCount" class="form-control mb-2" min="1" max="99999" value="1">
+
+                    <label for="itemTags">Tags</label>
+                    <select id="itemTags" class="form-control"></select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Abbrechen</button>
+                    <button id="confirmAddItem" class="btn btn-success" data-bs-dismiss="modal">Item hinzufügen</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script type="module" src="main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
 
 </body>
 </html>

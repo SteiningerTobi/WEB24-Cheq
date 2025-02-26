@@ -2,16 +2,7 @@
 import {cheqlistController} from "./modules/mvc/cheqlistController.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-    cheqlistController.initCheq();
-
-    let listTabBtn = document.querySelector(".listtab");
-    listTabBtn.addEventListener("click", () => {
-        cheqlistController.openListTab();
-    });
-    let itemTabBtn = document.querySelector(".itemtab");
-    itemTabBtn.addEventListener("click", () => {
-        cheqlistController.openItemTab();
-    })
+    await cheqlistController.initCheq();
 });
 
 

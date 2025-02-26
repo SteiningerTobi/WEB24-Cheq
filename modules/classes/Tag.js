@@ -1,11 +1,15 @@
 export default class Tag {
-    #tagname;
+    tagname;
 
     constructor(tagname) {
-        this.#tagname = tagname;
+        this.tagname = tagname;
     }
 
     getTagName() {
-        return this.#tagname;
+        return this.tagname;
+    }
+
+    setNewTagName(name){
+        this.name = name;
     }
 }
