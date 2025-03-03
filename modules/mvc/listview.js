@@ -9,11 +9,11 @@ export class ListView {
 
     update(eventType, data) {
         if (eventType === "dataLoaded") {
-            this.lists = data.lists || [];
-            this.renderLists(this.lists);
+        //    this.lists = data.lists || [];
+        //    this.renderLists(this.lists);
         } else if (eventType === "listAdded") {
-            this.lists.push(data);
-            this.renderLists(this.lists);
+        //    this.lists.push(data);
+        //    this.renderLists(this.lists);
         }
     }
 
