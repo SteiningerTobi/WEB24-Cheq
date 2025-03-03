@@ -11,11 +11,11 @@ export class ItemView {
 
     update(eventType, data) {
         if (eventType === "dataLoaded") {
-            this.articles = data.articles || [];
-            this.renderArticles(this.articles);
+        //    this.articles = data.articles || [];
+        //    this.renderArticles(this.articles);
         } else if (eventType === "articleDeleted") {
-            this.articles = this.articles.filter(article => article.getName() !== data.getName());
-            this.renderArticles(this.articles);
+        //    this.articles = this.articles.filter(article => article.getName() !== data.getName());
+        //    this.renderArticles(this.articles);
         }
 
     }
